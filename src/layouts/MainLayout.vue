@@ -1,42 +1,56 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="hHh lpR fFf">
+    <q-header
+      :class="$q.dark.isActive ? 'bg-dark text-light' : 'bg-light text-dark'"
+      height-hint="98"
+      bordered
+    >
       <q-toolbar>
         <q-btn
-          flat
           dense
+          flat
           round
           icon="menu"
-          aria-label="Menu"
+          :class="$q.dark.isActive ? 'text-accent' : 'text-dark'"
           @click="toggleLeftDrawer"
         />
 
         <q-toolbar-title>
-          Quasar App
+          <q-avatar>
+            <q-img src="~/assets/icon.png" />
+          </q-avatar>
+          SCI
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        <div class="q-px-md">
+          <q-icon
+            v-if="$q.dark.isActive"
+            name="brightness_5"
+            size="25px"
+            @click="$q.dark.toggle"
+          />
+          <q-icon
+            tag="theme"
+            v-else
+            name="brightness_2"
+            size="25px"
+            @click="$q.dark.toggle"
+          />
+        </div>
       </q-toolbar>
+      <q-tabs align="left">
+        <q-route-tab to="/page1" label="Page One" />
+        <q-route-tab to="/page2" label="Page Two" />
+        <q-route-tab to="/page3" label="Page Three" />
+      </q-tabs>
     </q-header>
 
     <q-drawer
-      v-model="leftDrawerOpen"
       show-if-above
-      bordered
+      v-model="leftDrawerOpen"
+      side="left"
+      :class="$q.dark.isActive ? 'bg-dark' : 'bg-primary'"
     >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
+      <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
     </q-drawer>
 
     <q-page-container>
@@ -46,71 +60,54 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
-
+import { ref } from "vue";
+import EssentialLink from "src/components/EssentialLink.vue";
 const linksList = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: "Docs",
+    caption: "scie.dev",
+    icon: "school",
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    title: "Github",
+    caption: "github.com/scie",
+    icon: "code",
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    title: "Discord Chat Channel",
+    caption: "chat.scie.dev",
+    icon: "chat",
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    title: "Forum",
+    caption: "forum.scie.dev",
+    icon: "record_voice_over",
   },
   {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
+    title: "Twitter",
+    caption: "@scie",
+    icon: "rss_feed",
   },
   {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
+    title: "Facebook",
+    caption: "@Scie",
+    icon: "public",
   },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
-
-export default defineComponent({
-  name: 'MainLayout',
-
+];
+export default {
   components: {
-    EssentialLink
+    EssentialLink,
   },
-
-  setup () {
-    const leftDrawerOpen = ref(false)
+  setup() {
+    const leftDrawerOpen = ref(false);
 
     return {
       essentialLinks: linksList,
       leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
-})
+      toggleLeftDrawer() {
+        leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+    };
+  },
+};
 </script>

@@ -1,11 +1,11 @@
 <template>
   <q-page class="flex flex-center">
-    <img alt="Quasar logo" src="~assets/icon.png" style="width: 200px; height: 200px" />
+    <q-icon name="home" size="50px" />
   </q-page>
 </template>
 
 <script>
 export default {
-  name: "IndexPage",
+  name: "PageOne",
 };
 </script>

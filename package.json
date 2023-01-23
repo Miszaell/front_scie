@@ -1,8 +1,8 @@
 {
-  "name": "quasar-scie",
+  "name": "quasar-sci",
   "version": "0.0.1",
   "description": "A Quasar Project",
-  "productName": "SCIE",
+  "productName": "SCI",
   "author": "Misael Villegas",
   "private": true,
   "scripts": {
