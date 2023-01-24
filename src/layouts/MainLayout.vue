@@ -19,9 +19,10 @@
           <q-avatar>
             <q-img src="~/assets/icon.png" />
           </q-avatar>
-          SCI
+          {{ $t("main.appTitle") }}
         </q-toolbar-title>
         <div class="q-px-md">
+          <q-icon name="translate" size="25px" class="q-mx-md" @click="setLanguaje()" />
           <q-icon
             v-if="$q.dark.isActive"
             name="brightness_5"
@@ -108,6 +109,13 @@ export default {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
     };
+  },
+
+  methods: {
+    setLanguaje() {
+      let lang = this.$root.$i18n.locale == "en-US" ? "es-MX" : "en-US";
+      this.$root.$i18n.locale = lang;
+    },
   },
 };
 </script>
