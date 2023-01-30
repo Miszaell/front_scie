@@ -37,11 +37,29 @@
             @click="$q.dark.toggle"
           />
         </div>
+        <div class="q-gutter-sm row items-center no-wrap">
+          <q-btn dense flat no-wrap no-caps :label="authStore.getUserName">
+            <q-icon name="arrow_drop_down" size="16px" />
+            <q-menu auto-close>
+              <q-list dense>
+                <q-separator />
+                <q-item clickable class="GL__menu-link">
+                  <q-item-section>Ajustes</q-item-section>
+                </q-item>
+                <q-item clickable class="GL__menu-link" @click="logout()">
+                  <q-item-section>Cerrar sesion</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </q-btn>
+        </div>
       </q-toolbar>
       <q-tabs align="left">
-        <q-route-tab to="/page1" label="Page One" />
-        <q-route-tab to="/page2" label="Page Two" />
-        <q-route-tab to="/page3" label="Page Three" />
+        <q-route-tab to="/contabilidad" :label="$t('tabsMenu.accounting')" />
+        <q-route-tab to="/nomina" :label="$t('tabsMenu.payroll')" />
+        <q-route-tab to="/presupuesto" :label="$t('tabsMenu.budget')" />
+        <q-route-tab to="/inventario" :label="$t('tabsMenu.inventory')" />
+        <q-route-tab to="/resguardos" :label="$t('tabsMenu.safeguards')" />
       </q-tabs>
     </q-header>
 
@@ -61,49 +79,60 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import EssentialLink from "src/components/EssentialLink.vue";
-const linksList = [
-  {
-    title: "Docs",
-    caption: "scie.dev",
-    icon: "school",
-  },
-  {
-    title: "Github",
-    caption: "github.com/scie",
-    icon: "code",
-  },
-  {
-    title: "Discord Chat Channel",
-    caption: "chat.scie.dev",
-    icon: "chat",
-  },
-  {
-    title: "Forum",
-    caption: "forum.scie.dev",
-    icon: "record_voice_over",
-  },
-  {
-    title: "Twitter",
-    caption: "@scie",
-    icon: "rss_feed",
-  },
-  {
-    title: "Facebook",
-    caption: "@Scie",
-    icon: "public",
-  },
-];
+import { useAuthStore } from "src/stores/auth/authStore";
+import { useRoute } from "vue-router";
+import {
+  accountingList,
+  payrollList,
+  budgetList,
+  inventoryList,
+  safeguardsList,
+  noMenu,
+} from "src/utils/traduction/traductionObj";
+
 export default {
   components: {
     EssentialLink,
   },
+  data() {
+    return { essLink: [] };
+  },
   setup() {
     const leftDrawerOpen = ref(false);
+    const authStore = useAuthStore();
+
+    const route = useRoute();
+    let essentialLinks = ref(noMenu);
+    watch(
+      () => route.path,
+      (routeNme) => {
+        if (routeNme == "/contabilidad") {
+          essentialLinks.value = accountingList;
+          leftDrawerOpen.value = true;
+        } else if (routeNme == "/nomina") {
+          essentialLinks.value = payrollList;
+          leftDrawerOpen.value = true;
+        } else if (routeNme == "/presupuesto") {
+          essentialLinks.value = budgetList;
+          leftDrawerOpen.value = true;
+        } else if (routeNme == "/inventario") {
+          essentialLinks.value = inventoryList;
+          leftDrawerOpen.value = true;
+        } else if (routeNme == "/resguardos") {
+          essentialLinks.value = safeguardsList;
+          leftDrawerOpen.value = true;
+        } else {
+          leftDrawerOpen.value = false;
+        }
+      }
+    );
 
     return {
-      essentialLinks: linksList,
+      route,
+      authStore,
+      essentialLinks,
       leftDrawerOpen,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
@@ -115,6 +144,10 @@ export default {
     setLanguaje() {
       let lang = this.$root.$i18n.locale == "en-US" ? "es-MX" : "en-US";
       this.$root.$i18n.locale = lang;
+    },
+    logout() {
+      this.authStore.signOut();
+      this.$router.push("/login");
     },
   },
 };

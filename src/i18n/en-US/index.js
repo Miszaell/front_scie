@@ -4,6 +4,7 @@
 export default {
   failed: 'Action failed',
   success: 'Action was successful',
+  noMenu: 'Browse the app to see the menu',
   loginForm: {
     user: "Username",
     password: "Password",
@@ -24,5 +25,57 @@ export default {
   buttons: {
     btnAuth: "Next",
     formContact: "Send",
+  },
+  tabsMenu: {
+    payroll: 'Payroll',
+    budget: 'Budget',
+    accounting: 'Accounting',
+    inventory: 'Inventory',
+    safeguards: 'Safeguards'
+  },
+  payroll: {
+    incidents: "Incidents",
+    returns: "Returns",
+    payrollProcessed: "Payroll processed",
+    periods: "Periods",
+    matches: "Matches"
+  },
+  budget:
+  {
+    budgetControl: "Budget Control",
+    periodControl: "Period control",
+    temnants: "Remnants",
+    budgetBalance: "Budget balance"
+  },
+  accounting:
+  {
+    customerInvoices: "Customer invoices",
+    payments: "Payments",
+    salableProducts: "Salable products",
+    supplierInvoices: "Supplier invoices",
+    payments: "Payments",
+    suppliers: "Suppliers",
+    accountingPlan: "Accounting plan",
+    financialReport: "Financial report",
+    ledger: "Ledger",
+    diaryBook: "Diary book",
+    spJournal: "Sales/ purchases journal"
+  },
+  inventory:
+  {
+    transfers: "Transfers",
+    products: "Products",
+    requestForSupplies: "Request for supplies",
+    inventoryOutputs: "Inventory outputs",
+    planner: "Planner",
+    inventoryReport: "Inventory report"
+  },
+  safeguards:
+  {
+    guards: "Guards",
+    assets: "Assets",
+    assetCategories: "Asset categories",
+    depreciations: "Depreciations",
+    assetsReport: "Assets report"
   },
 }

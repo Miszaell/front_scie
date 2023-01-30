@@ -90,11 +90,17 @@
 
 <script>
 import { useQuasar } from "quasar";
-
+import { useAuthStore } from "src/stores/auth/authStore";
 let $q;
 
 export default {
   name: "LoginPage",
+  setup() {
+    const authStore = useAuthStore();
+    return {
+      authStore,
+    };
+  },
   data() {
     return {
       login: {
@@ -117,24 +123,25 @@ export default {
           type: "negative",
           message: "Credenciales insuficientes",
         });
-      } else if (this.login.password.length < 6) {
+      } else if (this.login.password.length < 4) {
         $q.notify({
           type: "negative",
           message: "La contraseña debe tener más de 6 carácteres",
         });
       } else {
-        // try {
-        //   await this.doLogin(this.login);
-        const toPath = this.$route.query.to || "/home";
-        this.$router.push(toPath);
-        // } catch (err) {
-        //   if (err.response.data.detail) {
-        //     $q.notify({
-        //       type: "negative",
-        //       message: err.response.data.detail,
-        //     });
-        //   }
-        // }
+        try {
+          await this.authStore.doLogin(this.login);
+          const toPath = this.$route.query.to || "/home";
+          this.$router.push(toPath);
+        } catch (err) {
+          console.log(err);
+          if (err.response.data.error) {
+            $q.notify({
+              type: "negative",
+              message: err.response.data.error,
+            });
+          }
+        }
       }
     },
   },

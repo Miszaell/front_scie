@@ -1,7 +1,7 @@
 export default {
   failed: 'Acción fallida',
   success: 'Acción exitosa',
-
+  noMenu: 'Navega por la aplicación para ver el menú ',
   loginForm: {
     user: "Usuario",
     password: "Contraseña",
@@ -22,5 +22,57 @@ export default {
   buttons: {
     btnAuth: "Continuar",
     formContact: "Enviar",
+  },
+  tabsMenu: {
+    payroll: 'Nomina',
+    budget: 'Presupuesto',
+    accounting: 'Contabilidad',
+    inventory: 'Inventario',
+    safeguards: 'Resguardos'
+  },
+  payroll: {
+    incidents: "Incidencias",
+    returns: "Devoluciones",
+    payrollProcessed: "Nominas procesadas",
+    periods: "Periodos",
+    matches: "Partidas",
+  },
+  budget:
+  {
+    budgetControl: "Control presupuestal",
+    periodControl: "Control de periodos",
+    temnants: "Remanentes",
+    budgetBalance: "Balanza presupuestal",
+  },
+  accounting:
+  {
+    customerInvoices: "Facturas cliente",
+    payments: "Pagos",
+    salableProducts: "Productos vendibles",
+    supplierInvoices: "Facturas proveedor",
+    payments: "Pagos",
+    suppliers: "Proveedores",
+    accountingPlan: "Plan contable",
+    financialReport: "Reporte financiero",
+    ledger: "Libro Mayor",
+    diaryBook: "Libro diario",
+    spJournal: "Diario de ventas/compras",
+  },
+  inventory:
+  {
+    transfers: "Transferencias",
+    products: "Productos",
+    requestForSupplies: "Solicitud de suministros",
+    inventoryOutputs: "Salidas de inventario",
+    planner: "Planificador",
+    inventoryReport: "Informe de inventario",
+  },
+  safeguards:
+  {
+    guards: "Resguardos",
+    assets: "Activos",
+    assetCategories: "Categorias de activos",
+    depreciations: "Depreciaciones",
+    assetsReport: "Reporte de activos",
   },
 }

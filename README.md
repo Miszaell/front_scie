@@ -2,6 +2,8 @@
 
 A Quasar Project
 
+## Guide
+### Read more [Guide example](./example.pdf)
 ## Install the dependencies
 ```bash
 yarn
