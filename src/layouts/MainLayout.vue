@@ -56,10 +56,7 @@
       </q-toolbar>
       <q-tabs align="left">
         <q-route-tab to="/contabilidad" :label="$t('tabsMenu.accounting')" />
-        <q-route-tab to="/nomina" :label="$t('tabsMenu.payroll')" />
-        <q-route-tab to="/presupuesto" :label="$t('tabsMenu.budget')" />
         <q-route-tab to="/inventario" :label="$t('tabsMenu.inventory')" />
-        <q-route-tab to="/resguardos" :label="$t('tabsMenu.safeguards')" />
       </q-tabs>
     </q-header>
 
