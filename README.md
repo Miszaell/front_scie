@@ -11,6 +11,9 @@ yarn
 npm install
 ```
 
+### Configure Quasar CLI
+See [Configuring Quasar CLI](https://quasar.dev/start/quasar-cli).
+
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 ```bash
 quasar dev
