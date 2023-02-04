@@ -1,7 +1,7 @@
 import moment from 'moment'
 moment.locale('es')
 export default {
-  TrackVisibility(action, track_visibility, before, after,comment) {
+  TrackVisibility(action, track_visibility, before, after, comment) {
     let commits = [];
     let r_object_now = before.r_object;
     const options = {
@@ -29,8 +29,8 @@ export default {
       let commit = {
         fecha: moment(new Date()).format('dddd, DD MMMM YYYY hh:mm'),
         date: moment(new Date()).format('YYYY-MM-DD hh:mm:ss'),
-        nombre_usuario: sessionStorage.getItem("userName"),
-        user_id: sessionStorage.getItem("userId"),
+        nombre_usuario: JSON.parse(localStorage.getItem("user")).name,
+        user_id: JSON.parse(localStorage.getItem("user")).id,
         user_icon: sessionStorage.getItem("userAvatar"),
         type: "put",
         comment: "Se actualizaron",
@@ -44,8 +44,8 @@ export default {
           {
             fecha: moment(new Date()).format('dddd, DD MMMM YYYY hh:mm'),
             date: moment(new Date()).format('YYYY-MM-DD hh:mm:ss'),
-            nombre_usuario: sessionStorage.getItem("userName"),
-            user_id: sessionStorage.getItem("userId"),
+            nombre_usuario: JSON.parse(localStorage.getItem("user")).name,
+            user_id: JSON.parse(localStorage.getItem("user")).id,
             user_icon: sessionStorage.getItem("userAvatar"),
             type: "new",
             comment: "Nuevo elemento creado",
@@ -59,8 +59,8 @@ export default {
       let commit = {
         fecha: moment(new Date()).format('dddd, DD MMMM YYYY hh:mm'),
         date: moment(new Date()).format('YYYY-MM-DD hh:mm:ss'),
-        nombre_usuario: sessionStorage.getItem("userName"),
-        user_id: sessionStorage.getItem("userId"),
+        nombre_usuario: JSON.parse(localStorage.getItem("user")).name,
+        user_id: JSON.parse(localStorage.getItem("user")).id,
         user_icon: sessionStorage.getItem("userAvatar"),
         type: "comment",
         comment: comment,

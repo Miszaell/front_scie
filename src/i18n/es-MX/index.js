@@ -28,7 +28,11 @@ export default {
     budget: 'Presupuesto',
     accounting: 'Contabilidad',
     inventory: 'Inventario',
-    safeguards: 'Resguardos'
+    safeguards: 'Resguardos',
+    config: 'Configuración',
+  },
+  config: {
+    users: "Usuarios"
   },
   payroll: {
     incidents: "Incidencias",

@@ -43,8 +43,8 @@
             <q-menu auto-close>
               <q-list dense>
                 <q-separator />
-                <q-item clickable class="GL__menu-link">
-                  <q-item-section>Ajustes</q-item-section>
+                <q-item clickable class="GL__menu-link" to="/perfil">
+                  <q-item-section>Perfil</q-item-section>
                 </q-item>
                 <q-item clickable class="GL__menu-link" @click="logout()">
                   <q-item-section>Cerrar sesion</q-item-section>
@@ -57,6 +57,7 @@
       <q-tabs align="left">
         <q-route-tab to="/contabilidad" :label="$t('tabsMenu.accounting')" />
         <q-route-tab to="/inventario" :label="$t('tabsMenu.inventory')" />
+        <q-route-tab to="/config" :label="$t('tabsMenu.config')" />
       </q-tabs>
     </q-header>
 
@@ -82,10 +83,8 @@ import { useAuthStore } from "src/stores/auth/authStore";
 import { useRoute } from "vue-router";
 import {
   accountingList,
-  payrollList,
-  budgetList,
   inventoryList,
-  safeguardsList,
+  configList,
   noMenu,
 } from "src/utils/traduction/traductionObj";
 
@@ -108,17 +107,11 @@ export default {
         if (routeNme == "/contabilidad") {
           essentialLinks.value = accountingList;
           leftDrawerOpen.value = true;
-        } else if (routeNme == "/nomina") {
-          essentialLinks.value = payrollList;
-          leftDrawerOpen.value = true;
-        } else if (routeNme == "/presupuesto") {
-          essentialLinks.value = budgetList;
-          leftDrawerOpen.value = true;
         } else if (routeNme == "/inventario") {
           essentialLinks.value = inventoryList;
           leftDrawerOpen.value = true;
-        } else if (routeNme == "/resguardos") {
-          essentialLinks.value = safeguardsList;
+        } else if (routeNme == "/config") {
+          essentialLinks.value = configList;
           leftDrawerOpen.value = true;
         } else {
           leftDrawerOpen.value = false;

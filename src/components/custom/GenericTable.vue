@@ -284,7 +284,8 @@ export default defineComponent({
         this.mutateObject(clone);
         this.mutateCommits();
       }
-      return this.getterData;
+      let res = OM.ObjectMutator(this.getterData, "password");
+      return res;
     },
   },
   watch: {},

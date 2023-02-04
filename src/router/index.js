@@ -15,17 +15,17 @@ export default route(function () {
     history: createHistory(process.env.VUE_ROUTER_BASE)
 
   })
-  // Router.beforeEach((to, from, next) => {
-  //   const authStore = useAuthStore()
-  //   if (to.matched.some((record) => record.meta.requiresAuth) && !authStore.getIsAuthenticated) {
-  //     next({
-  //       path: "/login",
-  //       query: { to: to.path }
-  //     });
-  //   } else {
-  //     next();
-  //   }
-  // })
+  Router.beforeEach((to, from, next) => {
+    const authStore = useAuthStore()
+    if (to.matched.some((record) => record.meta.requiresAuth) && !authStore.getIsAuthenticated) {
+      next({
+        path: "/login",
+        query: { to: to.path }
+      });
+    } else {
+      next();
+    }
+  })
 
   return Router
 })

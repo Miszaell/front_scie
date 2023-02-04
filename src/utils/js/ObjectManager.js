@@ -61,8 +61,8 @@ const ObjectCreatorForm = (config = null, data) => {
         val.required = item.required
         val.label = label
         if (item.type == "select") {
-          let options = {options: []}
-          for (let[ky, vl] of Object.entries(item.options)) {
+          let options = { options: [] }
+          for (let [ky, vl] of Object.entries(item.options)) {
             options.options[ky] = {
               value: vl.value,
               label: vl.label
@@ -77,7 +77,18 @@ const ObjectCreatorForm = (config = null, data) => {
   return result
 };
 
+const ObjectMutator = (instance, property) => {
+  let newInstance = JSON.parse(JSON.stringify(instance));
+  newInstance.forEach(function (item) {
+    if (item.hasOwnProperty(property)) {
+      delete item[property]
+    }
+  });
+  return newInstance;
+}
+
 export default {
   ObjectCreator,
-  ObjectCreatorForm
+  ObjectCreatorForm,
+  ObjectMutator
 };

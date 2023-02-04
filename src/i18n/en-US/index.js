@@ -31,7 +31,11 @@ export default {
     budget: 'Budget',
     accounting: 'Accounting',
     inventory: 'Inventory',
-    safeguards: 'Safeguards'
+    safeguards: 'Safeguards',
+    config: 'Settings',
+  },
+  config: {
+    users: "Users"
   },
   payroll: {
     incidents: "Incidents",

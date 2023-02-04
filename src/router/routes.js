@@ -10,16 +10,7 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '/home', component: () => import('pages/IndexPage.vue') },
-      { path: '/page1', component: () => import('pages/page1.vue') },
-
-      {
-        path: '/nomina',
-        component: () => import('pages/page2.vue'),
-      },
-      {
-        path: '/presupuesto',
-        component: () => import('pages/page1.vue'),
-      },
+      { path: '/perfil', component: () => import('pages/Config/Perfil.vue') },
     ],
     meta: {
       requiresAuth: true,
@@ -35,15 +26,6 @@ const routes = [
     ]
   },
   {
-    path: '/presupuesto',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [
-      {
-        name: "control-presupuestal", path: 'control-presupuestal', component: () => import('pages/presupuesto/ControlPresupuestal.vue')
-      }
-    ]
-  },
-  {
     path: '/inventario',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -53,11 +35,11 @@ const routes = [
     ]
   },
   {
-    path: '/resguardos',
+    path: '/config',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       {
-        name: "resguardos", path: 'resguardos', component: () => import('pages/resguardos/Resguardos.vue')
+        name: "usuarios", path: 'usuarios', component: () => import('pages/config/Usuarios.vue')
       }
     ]
   },

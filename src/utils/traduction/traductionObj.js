@@ -140,6 +140,13 @@ export const safeguardsList = [
   }
 ];
 
+export const configList = [
+  {
+    title: "config.users",
+    icon: "person",
+    link: "usuarios"
+  }
+];
 export const noMenu = [
   {
     title: "noMenu",
